@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Array.prototype.slice=function(begin,end){
+        end=(typeof end == 'undefined')?this.length:end;//判断end是否传入，没有传入的话end=数组长度，传入了的话就是end。
+        end =(end<0)?this.length+end:end;//判断end是否为负数。
+        begin=(typeof begin =='undefined')?0:begin;//判断end是否传入，没穿如的话begin=0，slice（）返回的是整个数组，传入的话就是begin
+        begin =(begin<0)?this.length+begin:begin;//判断begin是否为负数、
+        var size = end-begin;//查询数组长度
+        if(size>0){
+            var arr = new Array(size);
+            for(i=0;i<size;i++){
+                arr[i]=this[begin+i];
+            }
+        }
+        return arr;
+    }
+    a = [1,2,3,4,5,5];
+    console.log(a.slice(2));
+</script>
+</body>
+</html>
