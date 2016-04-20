@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    Array.prototype.slc = function (n, m) {
+        //debugger;
+        var cur = [];
+        n = Number(n);
+        m = Number(m);
+
+        if (arguments.length == 0) {//没传参数
+            return console.log("请输入数字");
+        }
+        if (isNaN(n) || isNaN(m)) {//不是有效数字
+            return console.log("请输入有效数字");
+        }
+
+
+        if (m == undefined) {//m没有传时默认查询到最后一项
+            for (i = n; i < this.length; i++) {
+                cur[cur.length] = this[i];
+            }
+            return cur;
+        }
+
+        if(n>this.length||m>this.length){//n,m大于数组长度
+            return undefined;
+        }
+        if (n > m) {
+            var temp = n;
+            n = m;
+            m = temp;
+        }
+        if (n < 0 || m < 0) {//n,m为负数时模拟str.slice的方法
+            for (var i = n + this.length; i < m + this.length; i++) {
+                cur[cur.length] = (this[i]);
+            }
+            return cur;
+        }
+
+        for (var i = n; i < m; i++) {
+
+            cur[cur.length] = (this[i]);
+        }
+        return cur;
+
+
+    };
+    var ck = [1, 2, 3, 4, 5, 56];
+    console.log(ck.slc(-1, -4));
+
+</script>
+</body>
+</html>
