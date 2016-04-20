@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ary=[11,22,33,44,55,66,77,88]
+    var obj={}
+    Array.prototype.myslice=function(start,end){
+           if(start<0){
+               start=ary.length+start
+               if(start<0){
+                   start=0
+               }
+           }
+        if (end<0){
+            end=ary.length+end
+            if(end<0){
+                start=end.length
+            }
+        }
+        if(start>end){
+            var temp=start
+               start=end
+              end=temp
+        }
+            start=start||0;
+            end=end||0;
+            var cur=ary.splice(0,start)
+            console.log(cur)
+            var cur2=ary.splice(end-start,ary.length)
+            console.log(cur2)
+            console.log(ary)
+
+    }
+    var a1=new  Array.prototype.myslice(1,5)
+</script>
+</body>
+</html>
